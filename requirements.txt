@@ -1,0 +1,4 @@
+customtkinter
+pyshorteners
+pyperclip
+qrcode
