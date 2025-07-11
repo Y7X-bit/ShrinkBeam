@@ -1,9 +1,13 @@
-# 🚀 ShrinkBeam
+<h1 align="center">💫🚀 ShrinkBeam</h1>
 
-A sleek, glowing **Link Shortener + QR Code Generator** built with `customtkinter`.  
-Designed for **AMOLED screens**, red-hot accents, and a premium feel.
+<p align="center"><i>
+  Where long links vanish, and style glows.<br>
+  A pill-shaped, AMOLED-powered URL shortener ✂️✨
+</i></p>
 
-![Preview](assets/1.png)
+<p align="center">
+  <img src="assets/1.png" width="80%" style="border-radius: 20px;">
+</p>
 
 ---
 
