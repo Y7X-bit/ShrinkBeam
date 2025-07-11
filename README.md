@@ -1,4 +1,4 @@
-<h1 align="center">💫🚀 ShrinkBeam</h1>
+<h1 align="center">🚀 ShrinkBeam</h1>
 
 <p align="center"><i>
   Where long links vanish, and style glows.<br>
