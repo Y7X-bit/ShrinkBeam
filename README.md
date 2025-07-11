@@ -1,28 +1,36 @@
-# 🔗 Link Shortener Pro — Y7X AMOLED Edition
+# 🚀 ShrinkBeam
 
-A slick, glowing URL shortener tool with a full AMOLED black interface, powered by [`customtkinter`] and some Gen Z flair ✨
+A sleek, glowing **Link Shortener + QR Code Generator** built with `customtkinter`.  
+Designed for **AMOLED screens**, red-hot accents, and a premium feel.
 
-### ✨ Features
-- 🖤 AMOLED theme (true #000000 background)
-- ✂️ Shortens links using TinyURL or Is.gd
-- 💾 Save shortened links to file
+![Preview](assets/1.png)
+
+---
+
+## 🔥 Features
+
+- ✂️ Shorten long URLs instantly (TinyURL, is.gd)
 - 📋 Auto-copy to clipboard
-- 📱 Generate QR codes
-- 🕓 Timestamped history log
-- 💗 Custom branded: `Powered by Y7X 💗`
+- 📱 One-click QR Code generation
+- 💾 Save links to text files
+- 🕓 View history with timestamps
+- 🌑 Full AMOLED mode with hot red outlines
+- 💗 Glowing UI with modern, symmetric layout
 
 ---
 
-### 🚀 Preview
+## 🛠️ Tech Stack
 
-> Screenshot of the app UI  
-> *(Drag and drop a screenshot here once pushed!)*
+- `Python 3.10+`
+- `customtkinter` – modern UI
+- `pyshorteners` – URL shortening
+- `pyperclip` – clipboard support
+- `qrcode` – QR generation
 
 ---
 
-### 📦 Requirements
-
-Install dependencies:
+## 🚀 How to Run
 
 ```bash
 pip install -r requirements.txt
+python ShrinkBeam.py

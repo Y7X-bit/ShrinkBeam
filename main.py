@@ -5,7 +5,6 @@ import pyperclip
 import qrcode
 from datetime import datetime
 
-# Set AMOLED appearance
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
@@ -14,91 +13,101 @@ class LinkShortenerPro(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("🔗 Link Shortener Pro - Y7X AMOLED Edition")
-        self.geometry("580x580")
-        self.configure(bg="#000000")
+        self.title("🔗 ShrinkBeam")
+        self.geometry("640x560")
+        self.configure(fg_color="#000000")
+        self._fg_color = "#000000"
         self.resizable(False, False)
 
         self.short_history = []
 
-        # === Title ===
-        self.logo_label = ctk.CTkLabel(
-            self, text="🔗 Link Shortener Pro", font=("Segoe UI Black", 24),
-            text_color="#FF4B4B"
-        )
-        self.logo_label.pack(pady=(15, 8))
+        main_frame = ctk.CTkFrame(self, fg_color="#000000", bg_color="#000000")
+        main_frame.pack(expand=True, fill="both", padx=20, pady=20)
 
-        # === Shortener Dropdown ===
+        self.logo_label = ctk.CTkLabel(
+            main_frame, text="🚀 ShrinkBeam",
+            font=("Segoe UI Black", 24),
+            text_color="#FF1010", bg_color="#000000"
+        )
+        self.logo_label.pack(pady=(10, 5))
+
         self.shortener_var = ctk.StringVar(value="TinyURL")
         self.shortener_menu = ctk.CTkOptionMenu(
-            self, values=["TinyURL", "Is.gd"], variable=self.shortener_var,
-            width=180, fg_color="#000000", button_color="#FF4B4B", text_color="white"
+            main_frame, values=["TinyURL", "Is.gd"],
+            variable=self.shortener_var,
+            width=180, fg_color="#000000", button_color="#FF1010",
+            text_color="white", bg_color="#000000"
         )
         self.shortener_menu.pack(pady=5)
 
-        # === URL Input ===
         self.url_entry = ctk.CTkEntry(
-            self, placeholder_text="Paste your long URL here...",
-            width=520, height=45, fg_color="#000000", text_color="white",
-            border_color="#FF4B4B", border_width=2, corner_radius=20
+            main_frame, placeholder_text="Paste your long URL here...",
+            width=580, height=45, fg_color="#000000", text_color="white",
+            border_color="#FF1010", border_width=2, corner_radius=30,
+            bg_color="#000000"
         )
         self.url_entry.pack(pady=10)
 
-        # === Shorten Button ===
-        self.shorten_btn = ctk.CTkButton(
-            self, text="✂️ Shorten", command=self.shorten_link,
-            width=140, height=45, fg_color="#FF4B4B", hover_color="#FF2222",
-            text_color="white", font=("Segoe UI", 15), corner_radius=15
-        )
-        self.shorten_btn.pack(pady=(8, 5))
-
-        # === Save Button ===
-        self.save_btn = ctk.CTkButton(
-            self, text="💾 Save", command=self.save_link,
-            width=140, height=45, fg_color="#000000", hover_color="#1a1a1a",
-            border_color="#FF4B4B", border_width=2, text_color="#FF4B4B",
-            font=("Segoe UI", 15), corner_radius=15
-        )
-        self.save_btn.pack(pady=(0, 10))
-
-        # === Short URL Result Box ===
         self.result_box = ctk.CTkTextbox(
-            self, height=50, width=520, fg_color="#000000", font=("Segoe UI", 14),
-            text_color="#00FFAA", corner_radius=15, border_color="#FF4B4B", border_width=2
+            main_frame, height=50, width=580, fg_color="#000000",
+            font=("Segoe UI", 14), text_color="#00FFAA",
+            corner_radius=30, border_color="#FF1010", border_width=2,
+            bg_color="#000000"
         )
-        self.result_box.pack(pady=(12, 5))
+        self.result_box.pack(pady=(0, 15))
         self.result_box.insert("0.0", "✅ Your short URL will appear here...")
         self.result_box.configure(state="disabled")
         self.result_box.bind("<Button-1>", self.copy_result)
 
-        # === QR Code Button ===
+        button_frame = ctk.CTkFrame(main_frame, fg_color="#000000", bg_color="#000000")
+        button_frame.pack(pady=(0, 15))
+
+        button_width = 180
+        pill_radius = 30
+
+        self.shorten_btn = ctk.CTkButton(
+            button_frame, text="✂️ Shorten", command=self.shorten_link,
+            width=button_width, height=45, fg_color="#000000", hover_color="#1a1a1a",
+            border_color="#FF1010", border_width=2, text_color="#FF1010",
+            font=("Segoe UI", 15), corner_radius=pill_radius,
+            bg_color="#000000"
+        )
+        self.shorten_btn.grid(row=0, column=0, padx=8, pady=5)
+
+        self.save_btn = ctk.CTkButton(
+            button_frame, text="💾 Save", command=self.save_link,
+            width=button_width, height=45, fg_color="#000000", hover_color="#1a1a1a",
+            border_color="#FF1010", border_width=2, text_color="#FF1010",
+            font=("Segoe UI", 15), corner_radius=pill_radius, bg_color="#000000"
+        )
+        self.save_btn.grid(row=0, column=1, padx=8, pady=5)
+
         self.qr_btn = ctk.CTkButton(
-            self, text="📱 Generate QR Code", command=self.generate_qr,
-            fg_color="#000000", hover_color="#222222", text_color="white",
-            border_color="#FF4B4B", border_width=2, width=200, corner_radius=15
+            button_frame, text="📱 Generate QR Code", command=self.generate_qr,
+            width=button_width, height=45, fg_color="#000000", hover_color="#222222",
+            text_color="white", border_color="#FF1010", border_width=2,
+            corner_radius=pill_radius, bg_color="#000000"
         )
-        self.qr_btn.pack(pady=5)
+        self.qr_btn.grid(row=0, column=2, padx=8, pady=5)
 
-        # === History Label ===
         self.history_label = ctk.CTkLabel(
-            self, text="🕓 Shortened History", font=("Segoe UI", 14),
-            text_color="#888888"
+            main_frame, text="🕓 Shortened History",
+            font=("Segoe UI", 14), text_color="#888888", bg_color="#000000"
         )
-        self.history_label.pack(pady=(10, 0))
+        self.history_label.pack(pady=(10, 5))
 
-        # === History Box ===
         self.history_box = ctk.CTkTextbox(
-            self, width=520, height=100, fg_color="#000000", text_color="#888888",
-            corner_radius=15, font=("Consolas", 12), border_color="#333333", border_width=1
+            main_frame, width=580, height=100, fg_color="#000000",
+            text_color="#888888", corner_radius=20, font=("Consolas", 12),
+            border_color="#333333", border_width=1, bg_color="#000000"
         )
-        self.history_box.pack(pady=(5, 10))
+        self.history_box.pack(pady=(0, 10))
         self.history_box.insert("0.0", "📝 Shortened links will appear here...")
         self.history_box.configure(state="disabled")
 
-        # === Footer ===
         self.footer = ctk.CTkLabel(
-            self, text="🔎 Powered by Y7X 💗", font=("Courier New", 13),
-            text_color="#555555"
+            main_frame, text="🔎 Powered by Y7X 💗",
+            font=("Courier New", 13), text_color="#555555", bg_color="#000000"
         )
         self.footer.pack(side="bottom", pady=6)
 
@@ -154,7 +163,7 @@ class LinkShortenerPro(ctk.CTk):
             if filepath:
                 with open(filepath, "a") as f:
                     f.write(result.split()[1] + "\n")
-                self.show_result("✅ Link saved successfully!", "#FF4B4B")
+                self.show_result("✅ Link saved successfully!", "#FF1010")
         else:
             self.show_result("⚠️ No link to save.", "orange")
 
