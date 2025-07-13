@@ -1,17 +1,20 @@
-<h1 align="center">🚀 ShrinkBeam</h1>
+<div align="center">
 
-<p align="center"><i>
-  Where long links vanish, and style glows.<br>
-  A pill-shaped, AMOLED-powered URL shortener ✂️✨
-</i></p>
+# 🚀 ShrinkBeam
+**🧪 Brewed a URL potion, it's glowing now**
 
-<p align="center">
-  <img src="assets/1.png" width="80%" style="border-radius: 20px;">
-</p>
+Where long links vanish, and style glows.<br>
+A pill-shaped, AMOLED-powered URL shortener ✂️✨
+Branded with 💗 by [Y7X-bit](https://github.com/Y7X-bit)
+
+
+<img src="assets/1.png" width="80%" style="border-radius: 20px;">
+
+</div>
 
 ---
 
-## 🔥 Features
+## 🌟 Features at a Glance
 
 - ✂️ Shorten long URLs instantly (TinyURL, is.gd)
 - 📋 Auto-copy to clipboard
@@ -23,18 +26,12 @@
 
 ---
 
-## 🛠️ Tech Stack
+## 🖥️ Installation
 
-- `Python 3.10+`
-- `customtkinter` – modern UI
-- `pyshorteners` – URL shortening
-- `pyperclip` – clipboard support
-- `qrcode` – QR generation
-
----
-
-## 🚀 How to Run
+> Python 3.9 or later required
 
 ```bash
+git clone https://github.com/Y7X-bit/ShrinkBeam.git
+cd ShrinkBeam
 pip install -r requirements.txt
 python ShrinkBeam.py
